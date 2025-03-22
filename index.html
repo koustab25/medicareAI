@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediCare Solutions</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Loading Animation -->
+  <div id="loadingAnimation">
+    <img src="logo.png" alt="MediCare Solutions Logo" class="loading-logo">
+    <h1 class="loading-title">MediCare Solutions</h1>
+    <p class="loading-subtitle">Powered by NABONNESHOK TEAM</p>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container">
+    <!-- Back Button -->
+    <button id="backButton" class="back-button">Back</button>
+
+    <header>
+      <img src="logo.png" alt="MediCare Solutions Logo" class="logo">
+      <h1>Welcome to MediCare Solutions</h1>
+    </header>
+
+    <!-- Options Section -->
+    <div id="optionsSection">
+      <h2>What would you like to do?</h2>
+      <button id="healthCalculators">Health Calculators (BMI & Calories)</button>
+      <button id="selectMedicine">Buy Medicine</button>
+      <button id="takeSymptomTest">Take Symptom Test</button>
+    </div>
+
+    <!-- Health Calculators Section -->
+    <div id="healthCalculatorsSection" class="hidden">
+      <h2>Health Calculators</h2>
+      <form id="healthCalculatorForm">
+        <label for="height">Height (in cm):</label>
+        <input type="number" id="height" name="height" required>
+
+        <label for="weight">Weight (in kg):</label>
+        <input type="number" id="weight" name="weight" required>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required>
+
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+          <option value="">Select</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+
+        <label for="activityLevel">Activity Level:</label>
+        <select id="activityLevel" name="activityLevel" required>
+          <option value="">Select</option>
+          <option value="1.2">Sedentary (little or no exercise)</option>
+          <option value="1.375">Lightly active (light exercise/sports 1-3 days/week)</option>
+          <option value="1.55">Moderately active (moderate exercise/sports 3-5 days/week)</option>
+          <option value="1.725">Very active (hard exercise/sports 6-7 days/week)</option>
+          <option value="1.9">Extra active (very hard exercise/sports & physical job)</option>
+        </select>
+
+        <button type="submit">Calculate BMI & Calories</button>
+      </form>
+
+      <!-- BMI Result Section -->
+      <div id="bmiResult" class="hidden">
+        <h3>Your BMI Result</h3>
+        <p><strong>BMI:</strong> <span id="bmiValue"></span></p>
+        <p><strong>Category:</strong> <span id="bmiCategory"></span></p>
+      </div>
+
+      <!-- Calorie Recommendation Section -->
+      <div id="calorieResult" class="hidden">
+        <h3>Calorie Recommendation</h3>
+        <p><strong>Maintenance Calories:</strong> <span id="maintenanceCalories"></span> kcal/day</p>
+        <p><strong>Recommended Intake:</strong> <span id="recommendedCalories"></span> kcal/day</p>
+        <p><strong>Advice:</strong> <span id="calorieAdvice"></span></p>
+      </div>
+    </div>
+
+    <!-- Medicine Selection Section -->
+    <div id="medicineSection" class="hidden">
+      <h2>Select a Medicine</h2>
+      <select id="medicineList">
+        <option value="">Select a Medicine</option>
+        <option value="paracetamol">Paracetamol</option>
+        <option value="amoxicillin">Amoxicillin</option>
+        <option value="cetirizine">Cetirizine</option>
+        <option value="ibuprofen">Ibuprofen</option>
+        <option value="lisinopril">Lisinopril</option>
+        <option value="metformin">Metformin</option>
+        <option value="albuterol">Albuterol</option>
+        <option value="fluoxetine">Fluoxetine</option>
+        <option value="sertraline">Sertraline</option>
+        <option value="loratadine">Loratadine</option>
+        <option value="ferrousSulfate">Ferrous Sulfate</option>
+        <option value="omeprazole">Omeprazole</option>
+      </select>
+      <div id="medicineDetails" class="hidden">
+        <h3>Medicine Details</h3>
+        <p><strong>Price:</strong> <span id="medicinePrice"></span></p>
+        <p><strong>Side Effects:</strong> <span id="medicineSideEffects"></span></p>
+        <p><strong>Usage:</strong> <span id="medicineUsage"></span></p>
+        <p><strong>Availability:</strong> <span id="medicineAvailability"></span></p>
+        <label for="medicineQuantity">Quantity:</label>
+        <input type="number" id="medicineQuantity" min="1" value="1">
+        <button id="addToCart">Add to Cart</button>
+        <button id="proceedToBilling">Proceed to Billing</button>
+      </div>
+    </div>
+
+    <!-- Symptom Test Section -->
+    <div id="symptomTestSection" class="hidden">
+      <h2>Symptom Test</h2>
+      <p>Select your symptoms:</p>
+      <div id="symptomList">
+        <!-- Symptoms will be added dynamically using JavaScript -->
+      </div>
+      <button id="diagnose">Diagnose</button>
+      <div id="diagnosisResult" class="hidden">
+        <h3>Diagnosis Result</h3>
+        <p><strong>Disease:</strong> <span id="diseaseName"></span></p>
+        <p><strong>Treatment Difficulty:</strong> <span id="treatmentDifficulty"></span></p>
+        <p><strong>Recommended Medicine:</strong> <span id="recommendedMedicine"></span></p>
+        <p><strong>Price:</strong> <span id="medicinePriceAfterTest"></span></p>
+        <p><strong>Availability:</strong> <span id="medicineAvailabilityAfterTest"></span></p>
+        <button id="buyMedicineDirectly">Buy Medicine Directly</button>
+        <div id="fullDoctorList">
+          <h3>All Doctors</h3>
+          <div id="doctorList">
+            <!-- All doctors will be added dynamically using JavaScript -->
+          </div>
+        </div>
+        <div id="appointmentDetails" class="hidden">
+          <h3>Appointment Details</h3>
+          <p><strong>Doctor:</strong> <span id="selectedDoctor"></span></p>
+          <p><strong>Date:</strong> <span id="appointmentDate"></span></p>
+          <p><strong>Time:</strong> <span id="appointmentTime"></span></p>
+          <p><strong>Fee:</strong> <span id="consultationFee"></span></p>
+          <button id="proceedToBillingAfterConsultation">Proceed to Billing</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

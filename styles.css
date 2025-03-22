@@ -1,0 +1,480 @@
+/* General Styles */
+body {
+  background-color: #121212;
+  color: #FFFFFF;
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  background-color: #1E1E1E;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  padding: 30px;
+  width: 100%;
+  max-width: 500px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Header Section */
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.logo {
+  width: 80px;
+  height: auto;
+  margin-bottom: 10px;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
+  color: #007BFF;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Form Styles */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+label {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 5px;
+  color: #CCCCCC;
+  animation: fadeIn 1s ease-in-out;
+}
+
+input, select, button {
+  padding: 12px;
+  border: 1px solid #333333;
+  border-radius: 8px;
+  background-color: #2E2E2E;
+  color: #FFFFFF;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+input:focus, select:focus {
+  border-color: #007BFF;
+  outline: none;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+}
+
+button {
+  background-color: #007BFF;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+  transform: scale(1.02);
+}
+
+/* Hidden Class */
+.hidden {
+  display: none;
+}
+
+/* Loading Animation */
+#loadingAnimation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #121212;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeOut 1.5s ease-in-out forwards;
+}
+
+.loading-logo {
+  width: 100px;
+  height: auto;
+  animation: bounce 1.5s infinite;
+}
+
+.loading-title {
+  font-size: 32px;
+  font-weight: 600;
+  color: #007BFF;
+  margin-top: 20px;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.loading-subtitle {
+  font-size: 16px;
+  color: #CCCCCC;
+  margin-top: 10px;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; visibility: hidden; }
+}
+
+/* Options Section */
+#optionsSection {
+  text-align: center;
+  margin-top: 20px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+#optionsSection button {
+  width: 100%;
+  padding: 15px;
+  margin: 10px 0;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#healthCalculators {
+  background-color: #007BFF;
+  color: #FFFFFF;
+}
+
+#healthCalculators:hover {
+  background-color: #0056b3;
+}
+
+#selectMedicine {
+  background-color: #28a745;
+  color: #FFFFFF;
+}
+
+#selectMedicine:hover {
+  background-color: #218838;
+}
+
+#takeSymptomTest {
+  background-color: #dc3545;
+  color: #FFFFFF;
+}
+
+#takeSymptomTest:hover {
+  background-color: #c82333;
+}
+
+/* Health Calculators Section */
+#healthCalculatorsSection {
+  margin-top: 20px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+#bmiResult, #calorieResult {
+  background-color: #2E2E2E;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 20px;
+  animation: slideIn 0.5s ease-in-out;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+#bmiResult h3, #calorieResult h3 {
+  color: #007BFF;
+  margin-top: 0;
+}
+
+#bmiResult p, #calorieResult p {
+  font-size: 14px;
+  color: #CCCCCC;
+  margin: 10px 0;
+}
+
+/* Medicine Selection Section */
+#medicineSection {
+  margin-top: 20px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+#medicineList {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #333333;
+  border-radius: 8px;
+  background-color: #2E2E2E;
+  color: #FFFFFF;
+  font-size: 14px;
+}
+
+#medicineDetails {
+  background-color: #2E2E2E;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 10px;
+  animation: slideIn 0.5s ease-in-out;
+}
+
+#medicineDetails h3 {
+  margin-top: 0;
+  color: #007BFF;
+}
+
+#proceedToBilling {
+  background-color: #007BFF;
+  color: #FFFFFF;
+  width: 100%;
+  padding: 15px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#proceedToBilling:hover {
+  background-color: #0056b3;
+  transform: scale(1.02);
+}
+
+/* Symptom Test Section */
+#symptomTestSection {
+  margin-top: 20px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+#symptomList {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+#symptomList label {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #CCCCCC;
+}
+
+#symptomList input {
+  margin-right: 10px;
+}
+
+#diagnose {
+  width: 100%;
+  padding: 15px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  background-color: #007BFF;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#diagnose:hover {
+  background-color: #0056b3;
+  transform: scale(1.02);
+}
+
+/* Diagnosis Result Section */
+#diagnosisResult {
+  margin-top: 20px;
+  animation: slideIn 0.5s ease-in-out;
+}
+
+#diagnosisResult h3 {
+  color: #007BFF;
+}
+
+/* Doctor List Section */
+#fullDoctorList {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #2E2E2E;
+  border-radius: 8px;
+  animation: slideIn 0.5s ease-in-out;
+}
+
+#fullDoctorList h3 {
+  color: #007BFF;
+  margin-top: 0;
+  text-align: center;
+}
+
+#doctorList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  margin-top: 10px;
+}
+
+#doctorList label {
+  display: flex;
+  flex-direction: column;
+  background-color: #3E3E3E;
+  padding: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#doctorList label:hover {
+  background-color: #4E4E4E;
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+#doctorList input {
+  margin-right: 10px;
+}
+
+#doctorList strong {
+  font-size: 16px;
+  color: #007BFF;
+  margin-bottom: 5px;
+}
+
+#doctorList small {
+  font-size: 14px;
+  color: #CCCCCC;
+  line-height: 1.5;
+}
+
+/* Appointment Details Section */
+#appointmentDetails {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #2E2E2E;
+  border-radius: 8px;
+  animation: slideIn 0.5s ease-in-out;
+}
+
+#appointmentDetails h3 {
+  color: #007BFF;
+  margin-top: 0;
+}
+
+#appointmentDetails p {
+  font-size: 14px;
+  color: #CCCCCC;
+  margin: 10px 0;
+}
+
+#proceedToBillingAfterConsultation {
+  background-color: #28a745;
+  color: #FFFFFF;
+  width: 100%;
+  padding: 15px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-top: 20px;
+}
+
+#proceedToBillingAfterConsultation:hover {
+  background-color: #218838;
+  transform: scale(1.02);
+}
+
+/* Back Button Styles */
+.back-button {
+  background-color: #6c757d;
+  color: #FFFFFF;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.back-button:hover {
+  background-color: #5a6268;
+  transform: scale(1.02);
+}
+
+/* UPI QR Code Image */
+.upi-qr img.qr-code-image {
+  width: 150px; /* Adjusted size */
+  height: 150px; /* Adjusted size */
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 10px;
+  background: #fff;
+  margin: 10px auto;
+  display: block;
+}
+
+/* Payment Proof QR Code */
+#qrCode {
+  margin: 20px auto;
+  text-align: center;
+}
+
+#qrCode img {
+  width: 150px; /* Adjusted size */
+  height: 150px; /* Adjusted size */
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 10px;
+  background: #fff;
+}
+
+/* Thank You Animation */
+#thankYouAnimation {
+  text-align: center;
+  margin-top: 20px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+#thankYouAnimation h2 {
+  color: #007BFF;
+  margin-top: 0;
+}
+
+#thankYouAnimation p {
+  font-size: 16px;
+  color: #CCCCCC;
+  margin: 10px 0;
+}

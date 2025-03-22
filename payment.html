@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment - MediCare Solutions</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <!-- Back Button -->
+    <button id="backButton" class="back-button">Back</button>
+
+    <h1>Payment</h1>
+    <p><strong>Total Amount:</strong> ₹<span id="paymentAmount"></span></p>
+
+    <!-- Details Section -->
+    <div id="detailsSection"></div>
+
+    <!-- UPI QR Code -->
+    <div class="upi-qr">
+      <h2>Scan to Pay</h2>
+      <img src="upi-qr-code.png" alt="UPI QR Code" class="qr-code-image">
+      <p>Scan this QR code using any UPI app to complete the payment.</p>
+    </div>
+
+    <!-- Payment Proof QR Code -->
+    <div id="paymentProofSection" class="hidden">
+      <h2>Payment Proof</h2>
+      <div id="qrCode"></div>
+      <p>Take a screenshot of this page for your records.</p>
+      <button id="screenshotTaken">I have taken screenshot</button>
+    </div>
+
+    <!-- Payment Confirmation Button -->
+    <button id="confirmPayment">I have completed the payment</button>
+
+    <!-- Thank You Animation -->
+    <div id="thankYouAnimation" class="hidden">
+      <h2>Thank You!</h2>
+      <p>Your payment has been confirmed. Redirecting to the home page...</p>
+    </div>
+  </div>
+
+  <script>
+    // Back Button Functionality
+    document.getElementById('backButton').addEventListener('click', function () {
+      window.location.href = 'index.html';
+    });
+
+    // Retrieve payment details from localStorage
+    const paymentDetails = JSON.parse(localStorage.getItem('paymentDetails'));
+
+    // Display the total amount on the payment page
+    if (paymentDetails) {
+      document.getElementById('paymentAmount').textContent = paymentDetails.totalAmount;
+
+      // Display medicine or appointment details
+      const detailsSection = document.getElementById('detailsSection');
+      if (paymentDetails.type === 'medicine') {
+        detailsSection.innerHTML = `
+          <h2>Medicine Details</h2>
+          <ul>
+            ${paymentDetails.items.map(item => `
+              <li>
+                <strong>${item.name}</strong><br>
+                Quantity: ${item.quantity}<br>
+                Price: ${item.price}<br>
+                Total: ${item.totalPrice}
+              </li>
+            `).join('')}
+          </ul>
+        `;
+      } else if (paymentDetails.type === 'appointment') {
+        detailsSection.innerHTML = `
+          <h2>Appointment Details</h2>
+          <p><strong>Doctor:</strong> ${paymentDetails.doctorName}</p>
+          <p><strong>Specialization:</strong> ${paymentDetails.specialization}</p>
+          <p><strong>Date:</strong> ${paymentDetails.date}</p>
+          <p><strong>Time:</strong> ${paymentDetails.time}</p>
+          <p><strong>Venue:</strong> ${paymentDetails.venue}</p>
+          <p><strong>Fee:</strong> ${paymentDetails.fee}</p>
+        `;
+      }
+    } else {
+      document.getElementById('paymentAmount').textContent = 'N/A';
+    }
+
+    // Handle payment confirmation
+    document.getElementById('confirmPayment').addEventListener('click', function () {
+      const proofID = generatePaymentProofID();
+
+      // Generate QR code for payment proof (only contains payment ID and amount)
+      const qrData = JSON.stringify({
+        id: proofID,
+        amount: paymentDetails.totalAmount,
+      });
+      new QRCode(document.getElementById('qrCode'), {
+        text: qrData,
+        width: 150, // Adjusted size
+        height: 150, // Adjusted size
+      });
+
+      // Hide UPI QR code and show payment proof QR code
+      document.querySelector('.upi-qr').classList.add('hidden');
+      document.getElementById('paymentProofSection').classList.remove('hidden');
+
+      // Hide the "I have completed the payment" button
+      document.getElementById('confirmPayment').classList.add('hidden');
+    });
+
+    // Handle "I have taken screenshot" button
+    document.getElementById('screenshotTaken').addEventListener('click', function () {
+      // Clear localStorage after payment
+      localStorage.removeItem('paymentDetails');
+
+      // Show thank you animation
+      document.getElementById('thankYouAnimation').classList.remove('hidden');
+
+      // Redirect to the home page after 3 seconds
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 3000); // 3 seconds delay
+    });
+
+    // Function to generate a unique payment proof ID
+    function generatePaymentProofID() {
+      return 'PAY-' + Math.random().toString(36).substr(2, 9).toUpperCase();
+    }
+  </script>
+</body>
+</html>
